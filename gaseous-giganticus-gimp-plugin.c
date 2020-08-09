@@ -35,32 +35,21 @@
 #include "png_utils.h"
 #include "pthread_util.h"
 
-// TODO: typedef struct???
-
 // - - - - - ◊ - - - - - ◊ GIMP PLUGIN PREREQUISITES ◊ - - - - - ◊ - - - - - //
-static void query (void);
-static void run (@@@)
 
-static void (???)
-    
-    
-GimpPlugInInfo PLUG_IN_INFO =
+// - - - - - ◊ Delare local functions ◊ - - - - - //
+static void
+
+
+// - - - - - ◊ GIMP Plugin Information ◊ - - - - - //
+const GimpPlugInInfo PLUG_IN_INFO =
 {
-    NULL,
-    NULL,
-    query,
-    run
-}
-// - - - - - ◊ - - - - - ◊ GIMP PLUGIN CODE ◊ - - - - - ◊ - - - - - //
-MAIN()
+  NULL,    // Initialization Procedure
+  NULL,    // Quit Procedure
+  query,   // On-Plugin-Startup Procedure
+  run,     // Actual Program Procedure
+};
 
+// - - - - - ◊ - - - - - ◊ GIMP PLUGIN PROGRAM ◊ - - - - - ◊ - - - - - //
 
-// - - - - - ◊ TODO: static struct osn_context?? and definitions through magic_fluid_flow go here ◊ - - - - - //
-
-// - - - - - ◊ Output Cubemap Dimensions Definitions ◊ - - - - - //
-#define DIM 2048    // This is the dimension in pixels (hence the name DIM) of each of the edges of the output cubemap faces. For a final texture that is 8192 pixels wide by 4096 pixels tall, the input number here should ideally be 2048, 1/4th the desired width of the final texture.
-#define VFDIM 4096    // This is the dimension of the velocity field (hence VF in VFDIM) used to simulate fluid flow. It is recommended that this value be equal to 2 × DIM.
-
-static int vfdim = VFDIM;    // This line creates an integer value variable named "vfdim" with the same value as VFDIM has been defined as for ease of use in the code.
-
-#define FDIM ((float) (DIM))    // This line creates another variable, this time a floating-point one, that has the same numerical value as DIM, so that it can be used where a floating-point variable is requiored
+// - - - - - ◊ - - - - - ◊ GIMP PLUGIN USER INTERFACE ◊ - - - - - ◊ - - - - - //

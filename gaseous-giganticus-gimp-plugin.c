@@ -58,11 +58,13 @@ const GimpPlugInInfo PLUG_IN_INFO =
 static gint32
 gaseous_giganticus (GimpDrawable *drawable,
                     gint32       *layer_id) //MUST be ordered: generate >> create new images for cubemap faces > apply generated map to cubemap in order to assure seamlessness
-}
+{
   gint32 new_image_id_pos_z
   GimpDrawable *new_layer
-  //????
+  // add rest of necessary declarations here  
   
+  // TODO: BUILD GENERATOR HERE,
+    
   // - - - - - ◊ - - - - - ◊ CREATE CUBEMAP FACE: NEGATIVE Z (SOUTH POLE) ◊ - - - - - ◊ - - - - - // //maps to image "0" in forum post and original image output
   new_image_id_neg_z = gimp_image_new (config.cubemap_dimension, config.cubemap_dimension, GIMP_RGB);
   //...
@@ -84,9 +86,31 @@ gaseous_giganticus (GimpDrawable *drawable,
   return new_image_id_neg_x;
   
   // - - - - - ◊ - - - - - ◊ CREATE CUBEMAP FACE: POSITIVE Y (EQUATOR QUADRANT 2) ◊ - - - - - ◊ - - - - - // //maps to image "4"
+  new_image_id_pos_y = gimp_image_new (config.cubemap_dimension, config.cubemap_dimension, GIMP_RGB);
+  //...
+  return new_image_id_pos_y;
   
   // - - - - - ◊ - - - - - ◊ CREATE CUBEMAP FACE: NEGATIVE Y (EQUATOR QUADRANT 4) ◊ - - - - - ◊ - - - - - // //maps to image "5"
-  
-}
-
+  new_image_id_neg_y = gimp_image_new (config.cubemap_dimension, config.cubemap_dimension, GIMP_RGB);
+  //...
+  return new_image_id_neg_y;
+}//?
 // - - - - - ◊ - - - - - ◊ GIMP PLUGIN USER INTERFACE ◊ - - - - - ◊ - - - - - //
+static gboolean
+dialog (GimpDrawable *drawable)
+{
+  // put declarations here
+  //...
+  
+  run = (gimp_dialog_run (GIMP_DIALOG (dlg)) == GTK_RESPONSE_OK);
+  
+  if (run)
+  {
+    config.cubemap_dimension = gimp_size_entry_get_refval (GIMP_SIZE_ENTRY ( TODO ),
+                                                           0);
+  }
+
+  gtk_widget_destroy (dlg);
+  
+  return run;
+}

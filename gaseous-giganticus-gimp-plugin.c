@@ -52,7 +52,7 @@ GimpPlugInInfo PLUG_IN_INFO =
     run
 }
 // - - - - - ◊ - - - - - ◊ GIMP PLUGIN CODE ◊ - - - - - ◊ - - - - - //
-
+MAIN()
 
 
 // - - - - - ◊ TODO: static struct osn_context?? and definitions through magic_fluid_flow go here ◊ - - - - - //

@@ -1,0 +1,3 @@
+// GASEOUS-GIGANTICUS PLUGIN-PORT FOR GIMP
+
+// - - - - - 

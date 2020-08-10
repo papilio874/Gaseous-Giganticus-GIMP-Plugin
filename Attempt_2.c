@@ -73,13 +73,19 @@ query (void)
 {
   static const GimpParamDef args[] =
   {
-    { GIMP_PDB_INT32, ~ "run-mode", ~ "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }" },
-    { GIMP_PDB_IMAGE, ~ "image", ~ "Input image (unused)" },
+    { GIMP_PDB_INT32,    "run-mode", ~ "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }" },
+    { GIMP_PDB_IMAGE,    "image", ~ "Input image (unused)"            },
+    { GIMP_PDB_DRAWABLE, "drawable", ~ "Input drawable"              },
+    { GIMP_PDB_INT32,    "cubemap-dimension", ~ "Cubemap Face Edge Length (pixels)"   },
+    { GIMP_PDB_INT32,    "pole-attenuation", ~ "Pole-Attenuation Factor" },
+    { GIMP_PDB_INT32,    "bands", ~ "Number of Counter-Rotating Bands" }
+    { GIMP_PDB_INT32,    "", ~ "
     { //COME BACK TO HERE
   };
     
   static const GimpParamDef return_vals[]
   {
+    { GIMP_PDB_IMAGE, 
     //COME BACK TO HERE
   };
   

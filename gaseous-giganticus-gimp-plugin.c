@@ -115,8 +115,8 @@ static void paint_particle(int face, int i, int j, struct color *c, const int oc
 
 #else
   // maybe find more efficient method
-  old_color.red = (float) pixel[0] / 255.0f; //convert the old-colored-pixel's red value (specified in pixel as pixel[0]) from 255-based to percentage-based
-  old_color.green = (float) pixel[1] / 255.0f; // convert the old-colored-pixel's green value from 255-based to 
+  old_color.red = (float) pixel[0] / 255.0f; //convert the old-colored-pixel's red value (specified in *pixel as pixel[0]) from 255-based to percentage-based
+  old_color.green = (float) pixel[1] / 255.0f; // convert the old-colored-pixel's green value (specified in *pixel as pixel[1]) from 255-based to percentage-based
 }
 
 // - - - - - ◊ run the process in order on the input image, then create the blank cubemap face images, then paint the generated cubemap faces on their requisite images. ◊

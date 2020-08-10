@@ -96,5 +96,5 @@ query (void)
                           args, return_vals);
   
   // - - - - - ◊ PLUGIN LOCATION IN TOOLBAR MENU ◊ - - - - - //
-  gimp_plugin_menu_register (PLUG_IN_PROC, "<Image>/Filter(s???)"//
+  gimp_plugin_menu_register (PLUG_IN_PROC, "<Image>/Filters/Map"//
 }

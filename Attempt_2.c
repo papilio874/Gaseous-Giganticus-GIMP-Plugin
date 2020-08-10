@@ -76,22 +76,28 @@ query (void)
     { GIMP_PDB_INT32,    "run-mode", ~ "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }" },
     { GIMP_PDB_IMAGE,    "image", ~ "Input image (unused)"            },
     { GIMP_PDB_DRAWABLE, "drawable", ~ "Input drawable"              },
-    { GIMP_PDB_INT32,    "cubemap-dimension", ~ "Cubemap Face Edge Length (pixels)"   },
-    { GIMP_PDB_INT32,    "pole-attenuation", ~ "Pole-Attenuation Factor" },
-    { GIMP_PDB_INT32,    "bands", ~ "Number of Counter-Rotating Bands" }
-    { GIMP_PDB_INT32,    "", ~ "
+    { GIMP_PDB_INT32,    "cubemap-dimension", ~ "Cubemap face edge length (pixels)"   },
+    { GIMP_PDB_INT32,    "pole-attenuation", ~ "Pole-attenuation factor" },
+    { GIMP_PDB_INT32,    "bands", ~ "Number of counter-rotating bands" }
+    { GIMP_PDB_INT32,    "faderate", ~ "Rate of fade for particles of each iteration" },
+    { GIMP_PDB_INT32,    "count", ~ "Number of iterations the simulation will run" },
+    { GIMP_PDB_INT32,    "fbm-falloff", ~ "Fractal brownian-motion falloff coefficient" },
+    { GIMP_PDB_INT32,    "gain", ~ "Gain factor" },
+    { GIMP_PDB_INT32,    "speed-multiplier", ~ "Velocity field and band speed multiplier" },
+    { GIMP_PDB_INT32,    "w-offset", ~},
     { //COME BACK TO HERE
   };
     
   static const GimpParamDef return_vals[]
   {
-    { GIMP_PDB_IMAGE, 
-    //COME BACK TO HERE
+    { GIMP_PDB_IMAGE, "new-image", "Output image" },
+    { GIMP_PDB_IMAGE, "new-layer", "Output layer" }
+    // MAYBE COME BACK TO HERE
   };
   
   // - - - - - ◊ GIMP INSTALLATION PROCEDURE ◊ - - - - - //
   gimp_install_procedure (PLUG_IN_PROC,
-                          N_("Apply a curl noise-based fluid flow simulation velocity field to the image to generate the 6 faces of a cubemap of a gas planet."),
+                          N_("Apply a curl noise-based fluid flow simulation velocity field to the input image to generate the 6 faces of a cubemap of a gas planet."),
                           "help!",
                           "Stephen M. Cameron, ported to GIMP by Douglas Wallwey",
                           "Stephen M. Cameron, ported to GIMP by Douglas Wallwey",
@@ -102,5 +108,34 @@ query (void)
                           args, return_vals);
   
   // - - - - - ◊ PLUGIN LOCATION IN TOOLBAR MENU ◊ - - - - - //
-  gimp_plugin_menu_register (PLUG_IN_PROC, "<Image>/Filters/Map"//
+  gimp_plugin_menu_register (PLUG_IN_PROC, "<Image>/Filters/Map");
 }
+
+// - - - - - ◊ - - - - - ◊ - - - - - ◊ SET DEFAULT VALUES ◊ - - - - - ◊ - - - - - ◊ - - - - - //
+static struct
+{
+  gint cubemap_dimension;
+  gint pole_attenuation;
+  gint bands;
+  gint faderate;
+  gint count;
+  gint fbm_falloff;
+  gint gain;
+  gint speed_multiplier;
+  gint w_offset;
+  gint noise_levels;
+  gint velocity_factor;
+  gint band_vel_factor;
+  gint nparticles;
+  gint wstep;
+  gint nvortices:
+  gint vortex_band_threshold:
+  gint vortex_size;
+  gint vortex_size_variance;
+  gint noise_scale;
+} config =
+{
+  1024, 
+  
+//
+// - - - - - ◊ 
